@@ -1,0 +1,7 @@
+CREATE TABLE messages (
+    id         BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    room_id    BIGINT NOT NULL REFERENCES rooms(id) ON DELETE CASCADE,
+    sender_id  BIGINT NOT NULL REFERENCES users(id),
+    body       TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
